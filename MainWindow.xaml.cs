@@ -20,9 +20,16 @@ namespace Chess
     /// </summary>
     public partial class MainWindow : Window
     {
+        private BoardUi _ui;
         public MainWindow()
         {
             InitializeComponent();
+            Loaded += MainWindow_Loaded;
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            _ui = new BoardUi(canvas);
         }
     }
 }

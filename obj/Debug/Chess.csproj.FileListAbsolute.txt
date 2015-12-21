@@ -1,1 +1,14 @@
 C:\Users\Akshay\Documents\Visual Studio 2015\Projects\C#\Chess\bin\Debug\Chess.exe.config
+C:\Users\Akshay\Documents\Visual Studio 2015\Projects\C#\Chess\bin\Debug\Chess.exe
+C:\Users\Akshay\Documents\Visual Studio 2015\Projects\C#\Chess\bin\Debug\Chess.pdb
+C:\Users\Akshay\Documents\Visual Studio 2015\Projects\C#\Chess\obj\Debug\Chess.csprojResolveAssemblyReference.cache
+C:\Users\Akshay\Documents\Visual Studio 2015\Projects\C#\Chess\obj\Debug\MainWindow.g.cs
+C:\Users\Akshay\Documents\Visual Studio 2015\Projects\C#\Chess\obj\Debug\App.g.cs
+C:\Users\Akshay\Documents\Visual Studio 2015\Projects\C#\Chess\obj\Debug\Chess_MarkupCompile.cache
+C:\Users\Akshay\Documents\Visual Studio 2015\Projects\C#\Chess\obj\Debug\Chess_MarkupCompile.lref
+C:\Users\Akshay\Documents\Visual Studio 2015\Projects\C#\Chess\obj\Debug\MainWindow.baml
+C:\Users\Akshay\Documents\Visual Studio 2015\Projects\C#\Chess\obj\Debug\Chess.g.resources
+C:\Users\Akshay\Documents\Visual Studio 2015\Projects\C#\Chess\obj\Debug\Chess.Properties.Resources.resources
+C:\Users\Akshay\Documents\Visual Studio 2015\Projects\C#\Chess\obj\Debug\Chess.csproj.GenerateResource.Cache
+C:\Users\Akshay\Documents\Visual Studio 2015\Projects\C#\Chess\obj\Debug\Chess.exe
+C:\Users\Akshay\Documents\Visual Studio 2015\Projects\C#\Chess\obj\Debug\Chess.pdb
