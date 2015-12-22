@@ -7,14 +7,10 @@ using System.Threading.Tasks;
 namespace Chess
 {
     //base class for all chess pieces
-    abstract class ChessPiece
+    interface ChessPiece
     {
-        public Team Team { get; set; }      //which team this piece belongs
-
-        protected string GetIconPrefix()    //based on team, white or black (icons are named as wrook or brook)
-        {
-            return Team == Team.Black ? "b" : "w";
-        }
-        public abstract string GetIcon();
+        Team Team { get; }      //which team this piece belongs
+        string GetIcon();
+        GridCell Cell { get; }
     }
 }

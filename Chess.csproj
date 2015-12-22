@@ -58,12 +58,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AI.cs" />
+    <Compile Include="ChessPieceRaw.cs" />
+    <Compile Include="GridCell.cs" />
+    <Compile Include="HumanPlayer.cs" />
+    <Compile Include="ITurnManager.cs" />
     <Compile Include="Pieces\Bishop.cs" />
     <Compile Include="Pieces\King.cs" />
     <Compile Include="Pieces\Knight.cs" />
     <Compile Include="Pieces\Pawn.cs" />
     <Compile Include="Pieces\Queen.cs" />
     <Compile Include="Pieces\Rook.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Team.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

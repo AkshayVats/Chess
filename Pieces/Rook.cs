@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 
 namespace Chess.Pieces
 {
-    class Rook:ChessPiece
+    class Rook: ChessPieceRaw
     {
         public override string GetIcon()
         {
             return GetIconPrefix() + "rook.png";
+        }
+
+        public Rook(Team team) : base(team)
+        {
         }
     }
 }
