@@ -6,14 +6,19 @@ using System.Threading.Tasks;
 
 namespace Chess.Pieces
 {
-    class Bishop: ChessPieceRaw
+    class Bishop: Queen
     {
         public override string GetIcon()
         {
             return GetIconPrefix() + "bishop.png";
         }
 
-        public Bishop(Team team) : base(team)
+        public override IEnumerable<GridCell> PossibleMoves()
+        {
+            return BishopMoves();
+        }
+
+        public Bishop(Team team, ChessPiece[,] board) : base(team, board)
         {
         }
     }

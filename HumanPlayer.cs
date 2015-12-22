@@ -11,8 +11,11 @@ namespace Chess
     {
         private bool _turn;
         private Team Team;
-        public HumanPlayer()
+        private BoardUi _ui;
+
+        public HumanPlayer(BoardUi ui)
         {
+            _ui = ui;
         }
 
 
@@ -25,6 +28,12 @@ namespace Chess
         public void NotifyMove(GridCell @from, GridCell to)
         {
             
+        }
+
+        public void NotifyIconClicked(ChessPiece piece)
+        {
+            _ui.SelectIcon(piece);
+            _ui.LightCells(piece.PossibleMoves());
         }
     }
 }

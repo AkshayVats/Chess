@@ -41,10 +41,10 @@ namespace Chess
             Type[] heroes = {typeof(Rook), typeof(Knight), typeof(Bishop), typeof(Queen), typeof(King), typeof(Bishop), typeof(Knight), typeof(Rook)};
             for (int i = 0; i < 8; i++)
             {
-                this[0, i] = Activator.CreateInstance(heroes[i], Team.Black) as ChessPieceRaw;
-                this[7, i] = Activator.CreateInstance(heroes[i], Team.White) as ChessPieceRaw;
-                this[1,i]=new Pawn(Team.Black);
-                this[6,i]=new Pawn(Team.White);
+                this[0, i] = Activator.CreateInstance(heroes[i], Team.Black, _board) as ChessPieceRaw;
+                this[7, i] = Activator.CreateInstance(heroes[i], Team.White, _board) as ChessPieceRaw;
+                this[1,i]=new Pawn(Team.Black, _board);
+                this[6,i]=new Pawn(Team.White, _board);
             }
             _ui.Render(_board);
         }
@@ -58,9 +58,9 @@ namespace Chess
 
         public bool IconClicked(ChessPiece piece)
         {
-            if (players[_turn] is HumanPlayer && (piece.Team == Team.Black ^ _turn == 0))
+            if (players[_turn] is HumanPlayer && ((int)piece.Team ==_turn))
             {
-                _ui.SelectIcon(piece);
+                (players[_turn] as HumanPlayer).NotifyIconClicked(piece);
                 return true;
             }
             return false;
@@ -74,11 +74,15 @@ namespace Chess
             //Check for mate or stalemate
             //Change Turn
             //Notify Player
-            this[to] = this[from];
-            this[from] = null;
-            _ui.Render(_board);
-            _turn = _turn==0?1:0;
-            players[_turn].NotifyMove(from, to);
+            if (((int) this[from].Team == _turn) && (this[to] == null || (int) this[to].Team != _turn)&&this[from].PossibleMoves().Contains(to))
+            {
+                this[to] = this[from];
+                this[from] = null;
+                _ui.Render(_board);
+                _turn = _turn == 0 ? 1 : 0;
+                players[_turn].NotifyMove(from, to);
+                return true;
+            }
             return false;
         }
     }

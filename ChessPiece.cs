@@ -12,5 +12,6 @@ namespace Chess
         Team Team { get; }      //which team this piece belongs
         string GetIcon();
         GridCell Cell { get; }
+        IEnumerable<GridCell> PossibleMoves();
     }
 }

@@ -8,6 +8,6 @@ namespace Chess
 {
     enum Team
     {
-        White, Black
+        White=0, Black=1
     }
 }

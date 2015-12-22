@@ -27,6 +27,9 @@ namespace Chess
         private Image _lastSelected;
         private ITurnManager _turnManager;
 
+        List<GridCell> litCells = new List<GridCell>();
+        Rectangle[,] rectangles = new Rectangle[8,8];
+
         public BoardUi(Canvas canvas)
         {
             _canvas = canvas;
@@ -91,6 +94,7 @@ namespace Chess
                     Canvas.SetTop(rec, sideLineSz + i * _sqSz);
                     rec.MouseDown += Box_MouseDown;
                     rec.Tag = new GridCell(i,j);
+                    rectangles[i, j] = rec;
                 }
 
             _boardObjCnt = _canvas.Children.Count;
@@ -102,7 +106,7 @@ namespace Chess
         /// <param name="board">state of chess board</param>
         public void Render(ChessPiece[,] board)
         {
-            //TODO: Clear lit boxes
+            ClearLitBoxes();
             if(_canvas.Children.Count>_boardObjCnt)
             {
                 _canvas.Children.RemoveRange(_boardObjCnt, _canvas.Children.Count - _boardObjCnt);
@@ -178,8 +182,24 @@ namespace Chess
 
         public void LightCells(IEnumerable<GridCell> cells)
         {
-            //TODO: clear previously lit cells and light the cells
+            ClearLitBoxes();
+            foreach (var cell in cells)
+            {
+                var rec = rectangles[cell.Row, cell.Column];
+                var cellCol = (cell.Row + cell.Column)%2 == 0 ? Colors.White : Colors.Black;
+                rec.Fill = new SolidColorBrush(cellCol*0.05f+Colors.DarkGreen);
+                litCells.Add(cell);
+            }
         }
-        
+
+        private void ClearLitBoxes()
+        {
+            foreach (var cell in litCells)
+            {
+                var rec = rectangles[cell.Row, cell.Column];
+                rec.Fill = new SolidColorBrush((cell.Row + cell.Column) % 2 == 0 ? Colors.White : Colors.Black);
+            }
+            litCells.Clear();
+        }
     }
 }
