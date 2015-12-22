@@ -24,7 +24,7 @@ namespace Chess
 
         public void NotifyMove(GridCell @from, GridCell to)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

@@ -87,10 +87,10 @@ namespace Chess
                         Width = _sqSz
                     };
                     _canvas.Children.Add(rec);
-                    Canvas.SetLeft(rec, sideLineSz+i*_sqSz);
-                    Canvas.SetTop(rec, sideLineSz + j * _sqSz);
+                    Canvas.SetLeft(rec, sideLineSz+j*_sqSz);
+                    Canvas.SetTop(rec, sideLineSz + i * _sqSz);
                     rec.MouseDown += Box_MouseDown;
-                    rec.Tag = new Point(i,j);
+                    rec.Tag = new GridCell(i,j);
                 }
 
             _boardObjCnt = _canvas.Children.Count;
@@ -139,12 +139,23 @@ namespace Chess
 
         private void Box_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            //User clicks a box
+            var newPos = (GridCell)(sender as Rectangle).Tag;
+            MakeMove(newPos);
+        }
+
+        private void MakeMove(GridCell to)
+        {
+            if (_lastSelected != null)
+            {
+                var piece = _lastSelected.Tag as ChessPiece;
+                _turnManager.MovePiece(piece.Cell, to);
+            }
         }
 
         private void Icon_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            _turnManager?.IconClicked((sender as Image).Tag as ChessPiece);
+            if(_turnManager?.IconClicked((sender as Image).Tag as ChessPiece)==false)
+                MakeMove(((sender as Image).Tag as ChessPiece).Cell);
         }
 
         public void SelectIcon(ChessPiece piece)

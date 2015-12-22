@@ -33,7 +33,7 @@ namespace Chess
         {
             _ui = new BoardUi(canvas);
             _manager = new TurnManager(_ui);
-            _manager.SetupPlayers(new HumanPlayer(), new AI(_manager));
+            _manager.SetupPlayers(new HumanPlayer(), new HumanPlayer());
         }
     }
 }
