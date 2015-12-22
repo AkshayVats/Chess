@@ -8,5 +8,6 @@
         Title="MainWindow" Height="638.582" Width="616.228">
     <Grid>
         <Canvas x:Name="canvas"/>
+        
     </Grid>
 </Window>

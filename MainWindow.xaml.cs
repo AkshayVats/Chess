@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Chess.Pieces;
 
 namespace Chess
 {
@@ -21,6 +22,7 @@ namespace Chess
     public partial class MainWindow : Window
     {
         private BoardUi _ui;
+        private TurnManager _manager;
         public MainWindow()
         {
             InitializeComponent();
@@ -30,6 +32,7 @@ namespace Chess
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             _ui = new BoardUi(canvas);
+            _manager = new TurnManager(_ui);
         }
     }
 }
