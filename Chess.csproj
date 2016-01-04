@@ -62,6 +62,7 @@
     <Compile Include="ChessPieceRaw.cs" />
     <Compile Include="GridCell.cs" />
     <Compile Include="HumanPlayer.cs" />
+    <Compile Include="IPieceMover.cs" />
     <Compile Include="ITurnManager.cs" />
     <Compile Include="Pieces\Bishop.cs" />
     <Compile Include="Pieces\King.cs" />

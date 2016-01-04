@@ -33,8 +33,19 @@ namespace Chess
         public BoardUi(Canvas canvas)
         {
             _canvas = canvas;
+            FrameworkElement win = _canvas;
+            while (!(win is Window)) win = win.Parent as FrameworkElement;
+            win.KeyUp += Win_KeyUp;
             DrawBoxes();
         }
+        
+        private void Win_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.U)
+                _turnManager.UndoMove();
+        }
+
+
         //for cache purposes
         private ImageSource GetIcon(string iconName)
         {

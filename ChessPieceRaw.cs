@@ -8,7 +8,7 @@ namespace Chess
 {
     abstract class ChessPieceRaw:ChessPiece
     {
-        private ChessPiece[,] _board;
+        protected readonly ChessPiece[,] Board;
         private Team team;
 
         public Team Team { get; }      //which team this piece belongs
@@ -18,13 +18,19 @@ namespace Chess
             return Team == Team.Black ? "b" : "w";
         }
         public abstract string GetIcon();
-        public GridCell Cell { get; set; }
+        public GridCell Cell { get; private set; }
         public abstract IEnumerable<GridCell> PossibleMoves();
+
+        public virtual void Move(GridCell from, GridCell to)
+        {
+            Cell = to;
+        }
 
         protected ChessPieceRaw(Team team, ChessPiece[,] board)
         {
             Team = team;
-            _board = board;
+            Board = board;
+            Cell = GridCell.NullCell;
         }
         
         /// <summary>
@@ -39,14 +45,24 @@ namespace Chess
         {
             if (cell.Row>=0&&cell.Column>=0&&cell.Row<8&&cell.Column<8)
             {
-                if ((_board[cell.Row, cell.Column] != null))
+                if ((Board[cell.Row, cell.Column] != null))
                 {
-                    if (_board[cell.Row, cell.Column].Team == Team) return false;
+                    if (Board[cell.Row, cell.Column].Team == Team) return false;
                     return null;
                 }
                 return true;
             }
             return false;
+        }
+
+        /// <summary>
+        /// default implementation insted of making it abstract
+        /// </summary>
+        /// <param name="current"></param>
+        /// <param name="previous"></param>
+        public virtual void UndoMove(GridCell current, GridCell previous)
+        {
+            Cell = previous;
         }
     }
 }

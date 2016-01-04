@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Chess
 {
-    interface ITurnManager
+    interface IPieceMover
     {
-        bool IconClicked(ChessPiece piece); //return if the piece is of playing team
-        bool MovePiece(GridCell from, GridCell to);
+        void MovePieceUnconditioned(GridCell from, GridCell to);
         bool UndoMove();
+        void SpawnPiece(ChessPiece piece, GridCell cell);
     }
 }
